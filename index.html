@@ -1,34 +1,117 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lega degli Eroi</title>
-    <link rel="stylesheet" href="main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lega degli Eroi</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    .badge {
+      font-size: 0.8em;
+      padding: 2px 6px;
+      border-radius: 8px;
+      margin-left: 8px;
+    }
+    .fp { background-color: orange; color: white; }
+    .u21 { background-color: green; color: white; }
+    .both { background-color: purple; color: white; }
+    .player {
+      padding: 4px;
+      border-bottom: 1px solid #ddd;
+    }
+    .team {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-top: 20px;
+      padding: 16px;
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <ul class="navbar">
-            <li><a href="#rose">Rose</a></li>
-            <li><a href="#classifica">Classifica</a></li>
-            <li><a href="#draft">Draft</a></li>
-            <li><a href="#svincolati">Svincolati</a></li>
-            <li><a href="#chiamate">Chiamate</a></li>
-            <li><a href="#albo">Albo d'Oro</a></li>
-        </ul>
-    </nav>
-    <main>
-        <section id="rose"><h2>Rose</h2><p>Contenuto delle rose con FP/U21...</p></section>
-        <div id="contenitore-rose"></div>
-        <button onclick="mostraRosa('Team Bartowski')">Team Bartowski</button>
-        <button onclick="mostraRosa('Rubin Kebab')">Rubin Kebab</button>
-        <section id="classifica"><h2>Classifica</h2><p>Classifica Conference e Round Robin...</p></section>
-        <section id="draft"><h2>Draft 2025</h2><p>Ordine e scambi visivi...</p></section>
-        <section id="svincolati"><h2>Svincolati</h2><p>Lista filtrabile degli svincolati...</p></section>
-        <section id="chiamate"><h2>Chiamate Segrete</h2><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSd0GwlYmR8GBcW_fltIbnGDgIsITb0YNjnlxsoULQguPAALZw/viewform?usp=header" target="_blank">Invia la tua chiamata segreta</a>
-        <section id="albo"><h2>Albo d'Oro</h2><p>Vincitori precedenti...</p></section>
-    </main>
-    <script src="rose_completo.js"></script>
+  <nav>
+    <ul class="navbar">
+      <li><a href="#rose">Rose</a></li>
+      <li><a href="#classifica">Classifica</a></li>
+      <li><a href="#draft">Draft</a></li>
+      <li><a href="#svincolati">Svincolati</a></li>
+      <li><a href="#chiamate">Chiamate</a></li>
+      <li><a href="#albo">Albo d'Oro</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="rose">
+      <h2>Rose</h2>
+      <p>Contenuto delle rose con FP/U21...</p>
+      <button onclick="mostraRosa('Team Bartowski')">Team Bartowski</button>
+      <button onclick="mostraRosa('Rubin Kebab')">Rubin Kebab</button>
+      <!-- Aggiungi altri bottoni qui -->
+      <div id="contenitore-rose"></div>
+    </section>
+
+    <section id="classifica">
+      <h2>Classifica</h2>
+      <p>Classifica Conference e Round Robin...</p>
+    </section>
+
+    <section id="draft">
+      <h2>Draft 2025</h2>
+      <p>Ordine e scambi visivi...</p>
+    </section>
+
+    <section id="svincolati">
+      <h2>Svincolati</h2>
+      <p>Lista filtrabile degli svincolati...</p>
+    </section>
+
+    <section id="chiamate">
+      <h2>Chiamate Segrete</h2>
+      <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSd0GwlYmR8GBcW_fltIbnGDgIsITb0YNjnlxsoULQguPAALZw/viewform?usp=header" target="_blank">Invia la tua chiamata segreta</a></p>
+    </section>
+
+    <section id="albo">
+      <h2>Albo d'Oro</h2>
+      <p>Vincitori precedenti...</p>
+    </section>
+  </main>
+
+  <!-- Collegamento al file con le rose -->
+  <script src="rose_completo.js"></script>
+
+  <!-- Funzione per mostrare le rose -->
+  <script>
+    function mostraRosa(squadra) {
+      const contenitore = document.getElementById("contenitore-rose");
+      contenitore.innerHTML = "";
+
+      const rosa = rose[squadra];
+      if (!rosa) {
+        contenitore.innerHTML = "<p>Squadra non trovata.</p>";
+        return;
+      }
+
+      const teamDiv = document.createElement("div");
+      teamDiv.className = "team";
+
+      const title = document.createElement("h2");
+      title.textContent = squadra;
+      teamDiv.appendChild(title);
+
+      rosa.forEach(player => {
+        const div = document.createElement("div");
+        div.className = "player";
+        let badge = "";
+        if (player.status === "fp") badge = '<span class="badge fp">FP</span>';
+        else if (player.status === "u21") badge = '<span class="badge u21">U21</span>';
+        else if (player.status === "fp+u21") badge = '<span class="badge both">FP+U21</span>';
+        div.innerHTML = `${player.nome} ${badge}`;
+        teamDiv.appendChild(div);
+      });
+
+      contenitore.appendChild(teamDiv);
+    }
+  </script>
 </body>
 </html>
+
