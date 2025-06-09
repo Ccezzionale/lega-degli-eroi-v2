@@ -6,6 +6,43 @@
   <title>Lega degli Eroi</title>
   <link rel="stylesheet" href="main.css">
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      background-color: #333;
+      padding: 10px;
+    }
+    .navbar {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .navbar li {
+      margin: 5px 10px;
+    }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      background-color: #555;
+    }
+    .navbar a:hover {
+      background-color: #777;
+    }
+    main {
+      padding: 20px;
+    }
+    h2 {
+      color: #333;
+    }
     .badge {
       font-size: 0.8em;
       padding: 2px 6px;
@@ -26,6 +63,46 @@
       margin-top: 20px;
       padding: 16px;
     }
+    .tab-buttons button {
+      margin: 0 5px 10px 0;
+      padding: 6px 12px;
+      background-color: #444;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .tab-buttons button:hover {
+      background-color: #666;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th {
+      background-color: #eee;
+      font-weight: bold;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      text-align: center;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    button {
+      margin: 4px;
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #eee;
+    }
   </style>
 </head>
 <body>
@@ -44,6 +121,7 @@
     <section id="rose">
       <h2>Rose</h2>
       <p>Contenuto delle rose con FP/U21...</p>
+      <div id="contenitore-bottoni"></div>
       <div id="contenitore-rose"></div>
     </section>
 
@@ -80,8 +158,16 @@
 
   <script src="rose.js"></script>
   <script src="classifiche.js"></script>
-
   <script>
+    const squadre = Object.keys(rose);
+    const bottoniContainer = document.getElementById("contenitore-bottoni");
+    squadre.forEach(nome => {
+      const btn = document.createElement("button");
+      btn.textContent = nome;
+      btn.onclick = () => mostraRosa(nome);
+      bottoniContainer.appendChild(btn);
+    });
+
     function mostraRosa(squadra) {
       const contenitore = document.getElementById("contenitore-rose");
       contenitore.innerHTML = "";
@@ -117,17 +203,11 @@
         return;
       }
       const table = document.createElement("table");
-      table.style.borderCollapse = "collapse";
-      table.style.width = "100%";
-      table.style.marginTop = "10px";
       tabella.forEach((riga, i) => {
         const tr = document.createElement("tr");
         riga.forEach(cell => {
           const td = document.createElement(i === 0 ? "th" : "td");
           td.textContent = cell;
-          td.style.border = "1px solid #ccc";
-          td.style.padding = "6px 10px";
-          td.style.textAlign = "center";
           tr.appendChild(td);
         });
         table.appendChild(tr);
@@ -135,8 +215,7 @@
       contenitore.appendChild(table);
     }
 
-    // Mostra la classifica Round Robin di default
-    window.onload = () => mostraClassifica("roundrobin");
+    mostraClassifica("roundrobin");
   </script>
 </body>
 </html>
