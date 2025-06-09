@@ -156,9 +156,16 @@
     </section>
 
     <section>
-      <h2>Chiamate Settimanali</h2>
-      <div id="chiamate-container">Caricamento chiamate...</div>
-    </section>
+      <h2 class="titolo">Chiamate Settimanali</h2>
+
+      <label for="filtro-squadra">Filtra per squadra:</label>
+      <select id="filtro-squadra">
+      <option value="">Tutte</option>
+  </select>
+
+  <div id="chiamate-container">Caricamento chiamate...</div>
+</section>
+
 
     <section id="albo">
       <h2>Albo d'Oro</h2>
@@ -287,5 +294,55 @@
       });
     }
   </script>
+  <script>
+fetch('https://script.google.com/macros/s/AKfycbyFp5ILk_ipmbH1DUaw6fFGiKqHMKk9F1GysyEw7PV8qdqyHBVBsSWh7zpR_ALyXGBq/exec')
+  .then(res => res.json())
+  .then(data => {
+    data.sort((a, b) => new Date(b["Informazioni cronologiche"]) - new Date(a["Informazioni cronologiche"]));
+
+    const container = document.getElementById("chiamate-container");
+    const filtro = document.getElementById("filtro-squadra");
+
+    const squadre = [...new Set(data.map(row => row["Squadra"]))].sort();
+    squadre.forEach(s => {
+      const opt = document.createElement("option");
+      opt.value = s;
+      opt.textContent = s;
+      filtro.appendChild(opt);
+    });
+
+    filtro.addEventListener("change", () => render(data));
+
+    function render(dati) {
+      const squadraSelezionata = filtro.value;
+      const filtrati = squadraSelezionata ? dati.filter(r => r["Squadra"] === squadraSelezionata) : dati;
+
+      container.innerHTML = "";
+      if (!filtrati.length) {
+        container.innerHTML = "<p>Nessuna chiamata trovata.</p>";
+        return;
+      }
+
+      filtrati.forEach(row => {
+        const card = document.createElement("div");
+        card.className = "card-chiamata";
+        card.innerHTML = `
+          <strong>${row["Squadra"]}</strong> - ${row["Informazioni cronologiche"]}<br>
+          Ha chiamato <strong>${row["Giocatore chiamato"]}</strong><br>
+          Al posto di <strong>${row["Giocatore svincolato"]}</strong>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    render(data);
+  })
+  .catch(err => {
+    document.getElementById("chiamate-container").innerHTML =
+      "<p>Errore nel caricamento delle chiamate.</p>";
+    console.error(err);
+  });
+</script>
+
 </body>
 </html>
