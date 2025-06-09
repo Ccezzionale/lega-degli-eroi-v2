@@ -225,7 +225,6 @@
       contenitore.appendChild(teamDiv);
     }
 
-    // Classifiche
     function mostraClassifica(tipo) {
       const tabella = classifiche[tipo];
       const contenitore = document.getElementById("contenitore-classifica");
@@ -251,25 +250,33 @@
 
     // Albo d'Oro
     if (typeof alboDoro !== "undefined") {
-      const sezioneAlbo = document.getElementById("contenitore-albo");
-      Object.entries(alboDoro).forEach(([stagione, tornei]) => {
-        const titolo = document.createElement("h3");
-        titolo.textContent = stagione;
-        sezioneAlbo.appendChild(titolo);
+      const container = document.getElementById("contenitore-albo");
+      Object.entries(alboDoro).forEach(([anno, competizioni]) => {
+        const section = document.createElement("div");
+        section.className = "team";
 
-        Object.entries(tornei).forEach(([competizione, vincitori]) => {
-          const sottotitolo = document.createElement("h4");
-          sottotitolo.textContent = competizione;
-          sezioneAlbo.appendChild(sottotitolo);
+        const title = document.createElement("h2");
+        title.textContent = `Stagione ${anno}`;
+        section.appendChild(title);
 
-          const ul = document.createElement("ul");
-          vincitori.forEach(nome => {
-            const li = document.createElement("li");
-            li.innerHTML = getLogoHtml(nome) + nome;
-            ul.appendChild(li);
+        Object.entries(competizioni).forEach(([nome, podio]) => {
+          const comp = document.createElement("div");
+          const compTitle = document.createElement("h3");
+          compTitle.textContent = nome;
+          comp.appendChild(compTitle);
+
+          const podioDiv = document.createElement("div");
+          ["🥇", "🥈", "🥉"].forEach((medaglia, i) => {
+            const span = document.createElement("p");
+            span.innerHTML = `${medaglia} ${getLogoHtml(podio[i])}${podio[i] || '-'}`;
+            podioDiv.appendChild(span);
           });
-          sezioneAlbo.appendChild(ul);
+
+          comp.appendChild(podioDiv);
+          section.appendChild(comp);
         });
+
+        container.appendChild(section);
       });
     }
   </script>
