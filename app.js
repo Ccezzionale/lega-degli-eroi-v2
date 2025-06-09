@@ -23,38 +23,65 @@ function aggiornaChiamate() {
   document.getElementById("chiamate-container").innerHTML = "Aggiornamento in corso...";
   caricaChiamate();
 }
-// aggiornamento per forzare deploy
-function mostraRose() {
+
+function getLogoHtml(nomeSquadra) {
+  const file = {
+    "Team Bartowski": "Team Bartowski.png",
+    "Rubin Kebab": "Rubinkebab.png",
+    "wildboys78": "wildboys78.png",
+    "Desperados": "Desperados.png",
+    "MinneSota Snakes": "MinneSota Snakes.png",
+    "PokerMantra": "PokerMantra.png",
+    "Bayern Christiansen": "Bayern Christiansen.png",
+    "Minnesode Timberland": "Minnesode Timberland.png",
+    "Sharknado 04": "Sharknado 04.png",
+    "Real Mimmo": "Real Mimmo.png",
+    "Giody": "Giody.png",
+    "Ibla": "Ibla.png",
+    "Pandinicoccolosini": "Pandinicoccolosini.png",
+    "Giulay": "Giulay.png"
+  }[nomeSquadra];
+  return file ? `<img src="loghi/${file}" class="team-logo" alt="logo">` : "";
+}
+
+function mostraRosa(squadra) {
   const contenitore = document.getElementById("contenitore-rose");
   contenitore.innerHTML = "";
 
-  Object.entries(rose).forEach(([nomeSquadra, giocatori]) => {
-    const divSquadra = document.createElement("div");
-    divSquadra.className = "team";
+  const rosa = rose[squadra];
+  if (!rosa) {
+    contenitore.innerHTML = "<p>Rosa non trovata.</p>";
+    return;
+  }
 
-    const logo = document.createElement("img");
-    logo.src = `loghi/${nomeSquadra}.png`;
-    logo.alt = nomeSquadra;
-    logo.className = "team-logo";
-    divSquadra.appendChild(logo);
+  const teamDiv = document.createElement("div");
+  teamDiv.className = "team";
 
-    const titolo = document.createElement("h3");
-    titolo.textContent = nomeSquadra;
-    divSquadra.appendChild(titolo);
+  const title = document.createElement("h2");
+  title.innerHTML = getLogoHtml(squadra) + squadra;
+  teamDiv.appendChild(title);
 
-    giocatori.forEach(g => {
-      const p = document.createElement("div");
-      p.className = "player";
-      p.textContent = g.nome;
-
-      const badge = document.createElement("span");
-      badge.className = `badge ${g.status}`;
-      badge.textContent = g.status.toUpperCase();
-
-      p.appendChild(badge);
-      divSquadra.appendChild(p);
-    });
-
-    contenitore.appendChild(divSquadra);
+  rosa.forEach(player => {
+    const div = document.createElement("div");
+    div.className = "player";
+    let badge = "";
+    if (player.status === "fp") badge = '<span class="badge fp">FP</span>';
+    else if (player.status === "u21") badge = '<span class="badge u21">U21</span>';
+    else if (player.status === "fp+u21") badge = '<span class="badge both">FP+U21</span>';
+    div.innerHTML = `${player.nome} ${badge}`;
+    teamDiv.appendChild(div);
   });
+
+  contenitore.appendChild(teamDiv);
 }
+
+// Avvia bottoni rose al caricamento
+window.addEventListener("DOMContentLoaded", () => {
+  const bottoniContainer = document.getElementById("contenitore-bottoni");
+  Object.keys(rose).forEach(squadra => {
+    const btn = document.createElement("button");
+    btn.innerHTML = getLogoHtml(squadra) + squadra;
+    btn.onclick = () => mostraRosa(squadra);
+    bottoniContainer.appendChild(btn);
+  });
+});
