@@ -304,11 +304,12 @@
           filtrati.forEach(row => {
             const card = document.createElement("div");
             card.className = "card-chiamata";
-            card.innerHTML = `
-              <strong>${row["Squadra"]}</strong> - ${row["Informazioni cronologiche"]}<br>
-              Ha chiamato <strong>${row["Giocatore chiamato"]}</strong><br>
-              Al posto di <strong>${row["Giocatore svincolato"]}</strong>
-          `;
+           card.innerHTML = `
+              <strong>${row["Squadra"]}</strong> - ${new Date(row["Informazioni cronologiche"]).toLocaleString('it-IT')}<br>
+                Ha chiamato <strong>${row["Giocatore chiamato"]}</strong><br>
+                Al posto di <strong>${row["Giocatore svincolato"]}</strong>
+            `;
+
             container.appendChild(card);
           });
         }
