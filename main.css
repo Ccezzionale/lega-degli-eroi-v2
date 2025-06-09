@@ -37,10 +37,14 @@
 }
 
 .team-logo {
-  height: 20px;
+  height: 20px !important;
+  width: auto;
+  max-height: 20px;
   vertical-align: middle;
   margin-right: 6px;
+  display: inline-block;
 }
+
 @media (max-width: 600px) {
   nav ul.navbar {
     flex-direction: column;
