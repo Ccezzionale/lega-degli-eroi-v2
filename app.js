@@ -23,3 +23,4 @@ function aggiornaChiamate() {
   document.getElementById("chiamate-container").innerHTML = "Aggiornamento in corso...";
   caricaChiamate();
 }
+// aggiornamento per forzare deploy
