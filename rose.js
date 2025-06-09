@@ -1,166 +1,702 @@
 const rose = {
   "Team Bartowski": [
     {
-      "ruolo": "Por",
       "nome": "Reina",
-      "squadra": "Com",
-      "costo": 4
+      "status": "fp"
     },
     {
-      "ruolo": "Por",
-      "nome": "Meret",
-      "squadra": "Nap",
-      "costo": 19
-    },
-    {
-      "ruolo": "Por",
-      "nome": "Scuffet",
-      "squadra": "Nap",
-      "costo": 2
-    },
-    {
-      "ruolo": "Por",
       "nome": "Vigorito",
-      "squadra": "Com",
-      "costo": 1
+      "status": "fp"
     },
     {
-      "ruolo": "Por",
-      "nome": "Contini",
-      "squadra": "Nap",
-      "costo": 1
-    },
-    {
-      "ruolo": "Por",
       "nome": "Butez",
-      "squadra": "Com",
-      "costo": 9
+      "status": "fp"
     },
     {
-      "ruolo": "E",
-      "nome": "Dimarco",
-      "squadra": "Int",
-      "costo": 21
-    },
-    {
-      "ruolo": "E",
-      "nome": "Zappacosta",
-      "squadra": "Ata",
-      "costo": 15
-    },
-    {
-      "ruolo": "B;Ds;E",
       "nome": "Kolasinac",
-      "squadra": "Ata",
-      "costo": 7
+      "status": "fp"
     },
     {
-      "ruolo": "Dd;Dc",
       "nome": "Pavard",
-      "squadra": "Int",
-      "costo": 7
+      "status": "fp"
     },
     {
-      "ruolo": "Ds;E",
-      "nome": "Hernandez T.",
-      "squadra": "Mil",
-      "costo": 14
-    },
-    {
-      "ruolo": "Dc",
       "nome": "Maripan",
-      "squadra": "Tor",
-      "costo": 9
+      "status": "fp"
     },
     {
-      "ruolo": "Ds;Dc",
-      "nome": "Vasquez",
-      "squadra": "Gen",
-      "costo": 10
-    },
-    {
-      "ruolo": "Dd;Ds;E",
-      "nome": "Birindelli",
-      "squadra": "Mon",
-      "costo": 10
-    },
-    {
-      "ruolo": "E",
-      "nome": "Carlos Augusto",
-      "squadra": "Int",
-      "costo": 18
-    },
-    {
-      "ruolo": "C",
       "nome": "Mkhitaryan",
-      "squadra": "Int",
-      "costo": 13
+      "status": "fp"
     },
     {
-      "ruolo": "M;C",
       "nome": "Lobotka",
-      "squadra": "Nap",
-      "costo": 10
+      "status": "fp"
     },
     {
-      "ruolo": "W;T",
       "nome": "Elmas",
-      "squadra": "Tor",
-      "costo": 13
+      "status": "fp"
     },
     {
-      "ruolo": "M;C",
       "nome": "McKennie",
-      "squadra": "Juv",
-      "costo": 12
+      "status": "fp"
     },
     {
-      "ruolo": "C;T",
       "nome": "Miretti",
-      "squadra": "Gen",
-      "costo": 12
+      "status": "fp"
     },
     {
-      "ruolo": "T;A",
-      "nome": "Baldanzi",
-      "squadra": "Rom",
-      "costo": 8
-    },
-    {
-      "ruolo": "M;C",
       "nome": "Makoumbou",
-      "squadra": "Cag",
-      "costo": 5
+      "status": "fp"
     },
     {
-      "ruolo": "T;A",
-      "nome": "Paz N.",
-      "squadra": "Com",
-      "costo": 22
+      "nome": "Baldanzi",
+      "status": "u21"
+    }
+  ],
+  "Rubin Kebab": [
+    {
+      "nome": "Reina",
+      "status": "fp"
     },
     {
-      "ruolo": "W;A",
-      "nome": "Conceicao",
-      "squadra": "Juv",
-      "costo": 15
+      "nome": "Vigorito",
+      "status": "fp"
     },
     {
-      "ruolo": "Pc",
-      "nome": "Martinez L.",
-      "squadra": "Int",
-      "costo": 28
+      "nome": "Butez",
+      "status": "fp"
     },
     {
-      "ruolo": "Pc",
-      "nome": "Retegui",
-      "squadra": "Ata",
-      "costo": 38
+      "nome": "Kristensen T.",
+      "status": "fp"
     },
     {
-      "ruolo": "A",
-      "nome": "Dominguez B.",
-      "squadra": "Bol",
-      "costo": 20
+      "nome": "Zielinski",
+      "status": "fp"
+    },
+    {
+      "nome": "Freuler",
+      "status": "fp"
+    },
+    {
+      "nome": "Ilic",
+      "status": "fp"
+    },
+    {
+      "nome": "Da Cunha",
+      "status": "fp"
+    },
+    {
+      "nome": "Frendrup",
+      "status": "fp"
+    },
+    {
+      "nome": "Oristanio",
+      "status": "fp"
+    },
+    {
+      "nome": "Folorunsho",
+      "status": "fp"
+    },
+    {
+      "nome": "De Ketelaere",
+      "status": "fp"
+    }
+  ],
+  "wildboys78": [
+    {
+      "nome": "Provedel",
+      "status": "fp"
+    },
+    {
+      "nome": "Furlanetto",
+      "status": "fp"
+    },
+    {
+      "nome": "Mandas",
+      "status": "fp"
+    },
+    {
+      "nome": "Acerbi",
+      "status": "fp"
+    },
+    {
+      "nome": "Walker",
+      "status": "fp"
+    },
+    {
+      "nome": "Zappa",
+      "status": "fp"
+    },
+    {
+      "nome": "Thiaw",
+      "status": "fp"
+    },
+    {
+      "nome": "Freuler",
+      "status": "fp"
+    },
+    {
+      "nome": "Guendouzi",
+      "status": "fp"
+    },
+    {
+      "nome": "Ricci S.",
+      "status": "fp"
+    },
+    {
+      "nome": "Ramadani",
+      "status": "fp"
+    },
+    {
+      "nome": "Ekkelenkamp",
+      "status": "fp"
+    },
+    {
+      "nome": "Isaksen",
+      "status": "fp"
+    },
+    {
+      "nome": "Bonny",
+      "status": "fp"
+    },
+    {
+      "nome": "Tchaouna",
+      "status": "u21"
+    }
+  ],
+  "Desperados": [
+    {
+      "nome": "Brancolini",
+      "status": "fp"
+    },
+    {
+      "nome": "Vasquez D.",
+      "status": "fp"
+    },
+    {
+      "nome": "Seghetti",
+      "status": "fp"
+    },
+    {
+      "nome": "Pavard",
+      "status": "fp"
+    },
+    {
+      "nome": "Sverko",
+      "status": "fp"
+    },
+    {
+      "nome": "Douglas Luiz",
+      "status": "fp"
+    },
+    {
+      "nome": "Messias",
+      "status": "fp"
+    },
+    {
+      "nome": "Samardzic",
+      "status": "fp"
+    },
+    {
+      "nome": "Sohm",
+      "status": "fp"
+    },
+    {
+      "nome": "Ricci S.",
+      "status": "fp"
+    },
+    {
+      "nome": "Busio",
+      "status": "fp"
+    },
+    {
+      "nome": "Gonzalez N.",
+      "status": "fp"
+    },
+    {
+      "nome": "Sarr A.",
+      "status": "fp"
+    },
+    {
+      "nome": "Beltran L.",
+      "status": "fp"
+    },
+    {
+      "nome": "Fazzini",
+      "status": "u21"
+    }
+  ],
+  "MinneSota Snakes": [
+    {
+      "nome": "Padelli",
+      "status": "fp"
+    },
+    {
+      "nome": "Okoye",
+      "status": "fp"
+    },
+    {
+      "nome": "Sava",
+      "status": "fp"
+    },
+    {
+      "nome": "Acerbi",
+      "status": "fp"
+    },
+    {
+      "nome": "Viti",
+      "status": "fp"
+    },
+    {
+      "nome": "Coco",
+      "status": "fp"
+    },
+    {
+      "nome": "Maldini",
+      "status": "fp"
+    },
+    {
+      "nome": "Koopmeiners",
+      "status": "fp"
+    },
+    {
+      "nome": "Frendrup",
+      "status": "fp"
+    },
+    {
+      "nome": "Ferguson",
+      "status": "fp"
+    },
+    {
+      "nome": "Colpani",
+      "status": "fp"
+    },
+    {
+      "nome": "Dele-Bashiru",
+      "status": "fp"
+    },
+    {
+      "nome": "Joao Felix",
+      "status": "fp"
+    },
+    {
+      "nome": "Fabbian",
+      "status": "u21"
+    }
+  ],
+  "PokerMantra": [
+    {
+      "nome": "Padelli",
+      "status": "fp"
+    },
+    {
+      "nome": "Okoye",
+      "status": "fp"
+    },
+    {
+      "nome": "Sava",
+      "status": "fp"
+    },
+    {
+      "nome": "Gabbia",
+      "status": "fp"
+    },
+    {
+      "nome": "Ruggeri",
+      "status": "fp"
+    },
+    {
+      "nome": "Baschirotto",
+      "status": "fp"
+    },
+    {
+      "nome": "Rovella",
+      "status": "fp"
+    },
+    {
+      "nome": "Pobega",
+      "status": "fp"
+    },
+    {
+      "nome": "Zerbin",
+      "status": "fp"
+    },
+    {
+      "nome": "Arnautovic",
+      "status": "fp"
+    },
+    {
+      "nome": "Cancellieri",
+      "status": "fp"
+    },
+    {
+      "nome": "Yildiz",
+      "status": "u21"
+    }
+  ],
+  "Bayern Christiansen": [
+    {
+      "nome": "Maripan",
+      "status": "fp"
+    },
+    {
+      "nome": "Ikone'",
+      "status": "fp"
+    },
+    {
+      "nome": "McKennie",
+      "status": "fp"
+    },
+    {
+      "nome": "Koopmeiners",
+      "status": "fp"
+    },
+    {
+      "nome": "Zerbin",
+      "status": "fp"
+    },
+    {
+      "nome": "Castro S.",
+      "status": "u21"
+    }
+  ],
+  "Minnesode Timberland": [
+    {
+      "nome": "Pavlovic",
+      "status": "fp"
+    },
+    {
+      "nome": "Olivera",
+      "status": "fp"
+    },
+    {
+      "nome": "Circati",
+      "status": "fp"
+    },
+    {
+      "nome": "Viola",
+      "status": "fp"
+    },
+    {
+      "nome": "Locatelli",
+      "status": "fp"
+    },
+    {
+      "nome": "Oristanio",
+      "status": "fp"
+    },
+    {
+      "nome": "Arnautovic",
+      "status": "fp"
+    },
+    {
+      "nome": "De Ketelaere",
+      "status": "fp"
+    },
+    {
+      "nome": "Scalvini",
+      "status": "u21"
+    }
+  ],
+  "Sharknado 04": [
+    {
+      "nome": "Marcone",
+      "status": "fp"
+    },
+    {
+      "nome": "Suzuki",
+      "status": "fp"
+    },
+    {
+      "nome": "Corvi",
+      "status": "fp"
+    },
+    {
+      "nome": "Romagnoli",
+      "status": "fp"
+    },
+    {
+      "nome": "Walker",
+      "status": "fp"
+    },
+    {
+      "nome": "Kolasinac",
+      "status": "fp"
+    },
+    {
+      "nome": "Lucumi'",
+      "status": "fp"
+    },
+    {
+      "nome": "Beukema",
+      "status": "fp"
+    },
+    {
+      "nome": "Raspadori",
+      "status": "fp"
+    },
+    {
+      "nome": "Kolo Muani",
+      "status": "fp"
+    },
+    {
+      "nome": "Fabbian",
+      "status": "u21"
+    }
+  ],
+  "Real Mimmo": [
+    {
+      "nome": "Lucumi'",
+      "status": "fp"
+    },
+    {
+      "nome": "Gaspar K.",
+      "status": "fp"
+    },
+    {
+      "nome": "Coco",
+      "status": "fp"
+    },
+    {
+      "nome": "Paredes",
+      "status": "fp"
+    },
+    {
+      "nome": "Hernani",
+      "status": "fp"
+    },
+    {
+      "nome": "Da Cunha",
+      "status": "fp"
+    },
+    {
+      "nome": "Miretti",
+      "status": "fp"
+    },
+    {
+      "nome": "Lovric",
+      "status": "fp"
+    },
+    {
+      "nome": "Ferguson",
+      "status": "fp"
+    },
+    {
+      "nome": "Jovic",
+      "status": "fp"
+    },
+    {
+      "nome": "Sarr A.",
+      "status": "fp"
+    },
+    {
+      "nome": "Bonny",
+      "status": "u21"
+    }
+  ],
+  "Giody": [
+    {
+      "nome": "Biraghi",
+      "status": "fp"
+    },
+    {
+      "nome": "Pavlovic",
+      "status": "fp"
+    },
+    {
+      "nome": "Hien",
+      "status": "fp"
+    },
+    {
+      "nome": "Pellegrini Lo.",
+      "status": "fp"
+    },
+    {
+      "nome": "Pasalic",
+      "status": "fp"
+    },
+    {
+      "nome": "Fagioli",
+      "status": "fp"
+    },
+    {
+      "nome": "Makoumbou",
+      "status": "fp"
+    },
+    {
+      "nome": "Goglichidze",
+      "status": "u21"
+    }
+  ],
+  "Ibla": [
+    {
+      "nome": "Provedel",
+      "status": "fp"
+    },
+    {
+      "nome": "Furlanetto",
+      "status": "fp"
+    },
+    {
+      "nome": "Mandas",
+      "status": "fp"
+    },
+    {
+      "nome": "Djimsiti",
+      "status": "fp"
+    },
+    {
+      "nome": "Mina",
+      "status": "fp"
+    },
+    {
+      "nome": "Gabbia",
+      "status": "fp"
+    },
+    {
+      "nome": "Ruggeri",
+      "status": "fp"
+    },
+    {
+      "nome": "Jimenez A.",
+      "status": "fp"
+    },
+    {
+      "nome": "Savona",
+      "status": "fp"
+    },
+    {
+      "nome": "Alberto Costa",
+      "status": "fp"
+    },
+    {
+      "nome": "Locatelli",
+      "status": "fp"
+    },
+    {
+      "nome": "Fagioli",
+      "status": "fp"
+    },
+    {
+      "nome": "Casadei",
+      "status": "fp"
+    },
+    {
+      "nome": "Dele-Bashiru",
+      "status": "fp"
+    },
+    {
+      "nome": "Gonzalez N.",
+      "status": "fp"
+    },
+    {
+      "nome": "Krstovic",
+      "status": "fp"
+    },
+    {
+      "nome": "Soule'",
+      "status": "u21"
+    }
+  ],
+  "Pandinicoccolosini": [
+    {
+      "nome": "Masina",
+      "status": "fp"
+    },
+    {
+      "nome": "Izzo",
+      "status": "fp"
+    },
+    {
+      "nome": "Romagnoli",
+      "status": "fp"
+    },
+    {
+      "nome": "Sabelli",
+      "status": "fp"
+    },
+    {
+      "nome": "Hummels",
+      "status": "fp"
+    },
+    {
+      "nome": "Cataldi",
+      "status": "fp"
+    },
+    {
+      "nome": "Pasalic",
+      "status": "fp"
+    },
+    {
+      "nome": "Rovella",
+      "status": "fp"
+    },
+    {
+      "nome": "Samardzic",
+      "status": "fp"
+    },
+    {
+      "nome": "Tete Morente",
+      "status": "fp"
+    },
+    {
+      "nome": "Liberali",
+      "status": "fp"
+    },
+    {
+      "nome": "Ekkelenkamp",
+      "status": "fp"
+    },
+    {
+      "nome": "Fadera",
+      "status": "fp"
+    },
+    {
+      "nome": "Gourna-Douath",
+      "status": "fp"
+    },
+    {
+      "nome": "Joao Felix",
+      "status": "fp"
+    },
+    {
+      "nome": "Yildiz",
+      "status": "u21"
+    }
+  ],
+  "Giulay": [
+    {
+      "nome": "Biraghi",
+      "status": "fp"
+    },
+    {
+      "nome": "Pavlovic",
+      "status": "fp"
+    },
+    {
+      "nome": "Hien",
+      "status": "fp"
+    },
+    {
+      "nome": "Pellegrini Lo.",
+      "status": "fp"
+    },
+    {
+      "nome": "Pasalic",
+      "status": "fp"
+    },
+    {
+      "nome": "Fagioli",
+      "status": "fp"
+    },
+    {
+      "nome": "Makoumbou",
+      "status": "fp"
+    },
+    {
+      "nome": "Goglichidze",
+      "status": "u21"
     }
   ]
 };
