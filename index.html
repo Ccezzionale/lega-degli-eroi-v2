@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -20,10 +19,31 @@
   </nav>
 
   <main>
-    <section id="rose"><h2>Rose</h2><p>Contenuto in arrivo...</p></section>
-    <section id="classifica"><h2>Classifica</h2><p>Contenuto in arrivo...</p></section>
-    <section id="draft"><h2>Draft</h2><p>Contenuto in arrivo...</p></section>
-    <section id="svincolati"><h2>Svincolati</h2><p>Contenuto in arrivo...</p></section>
+    <section id="rose">
+      <h2>Rose</h2>
+      <div id="contenitore-bottoni"></div>
+      <div id="contenitore-rose"></div>
+    </section>
+
+    <section id="classifica">
+      <h2>Classifica</h2>
+      <div class="tab-buttons">
+        <button onclick="mostraClassifica('roundrobin')">Round Robin</button>
+        <button onclick="mostraClassifica('conference')">Conference League</button>
+        <button onclick="mostraClassifica('championship')">Conference Championship</button>
+      </div>
+      <div id="contenitore-classifica"></div>
+    </section>
+
+    <section id="draft">
+      <h2>Draft</h2>
+      <p>Contenuto in arrivo...</p>
+    </section>
+
+    <section id="svincolati">
+      <h2>Svincolati</h2>
+      <p>Contenuto in arrivo...</p>
+    </section>
 
     <section id="chiamate">
       <h2 class="titolo">Chiamate Settimanali</h2>
@@ -41,6 +61,10 @@
     </section>
   </main>
 
-  <script src="app.js"></script>
+  <!-- JS Scripts -->
+  <script src="rose.js"></script>
+  <script src="classifiche.js"></script>
+  <script src="albo_doro.js"></script>
+  <script src="chiamate.js"></script>
 </body>
 </html>
