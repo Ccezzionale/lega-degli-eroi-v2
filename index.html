@@ -108,6 +108,20 @@
       vertical-align: middle;
       margin-right: 6px;
     }
+    .card-chiamata {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      line-height: 1.5;
+    }
+    select {
+      padding: 6px 12px;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -125,7 +139,6 @@
   <main>
     <section id="rose">
       <h2>Rose</h2>
-      <p>Contenuto delle rose con FP/U21...</p>
       <div id="contenitore-bottoni"></div>
       <div id="contenitore-rose"></div>
     </section>
@@ -160,12 +173,11 @@
 
       <label for="filtro-squadra">Filtra per squadra:</label>
       <select id="filtro-squadra">
-      <option value="">Tutte</option>
-  </select>
+        <option value="">Tutte</option>
+      </select>
 
-  <div id="chiamate-container">Caricamento chiamate...</div>
-</section>
-
+      <div id="chiamate-container">Caricamento chiamate...</div>
+    </section>
 
     <section id="albo">
       <h2>Albo d'Oro</h2>
@@ -175,9 +187,8 @@
 
   <script src="rose.js"></script>
   <script src="classifiche.js"></script>
-  <script src="chiamate.js"></script>
   <script src="albo_doro.js"></script>
-  <script>console.log("AlboDoro è", typeof alboDoro, alboDoro);</script>
+
   <script>
     const logoPath = "loghi/";
 
@@ -203,7 +214,6 @@
       return "";
     }
 
-    // Rose
     const squadre = Object.keys(rose);
     const bottoniContainer = document.getElementById("contenitore-bottoni");
     squadre.forEach(nome => {
@@ -261,88 +271,55 @@
     }
 
     mostraClassifica("roundrobin");
+  </script>
 
-    // Albo d'Oro
-    if (typeof alboDoro !== "undefined") {
-      const container = document.getElementById("contenitore-albo");
-      Object.entries(alboDoro).forEach(([anno, competizioni]) => {
-        const section = document.createElement("div");
-        section.className = "team";
+  <script>
+    fetch('https://script.google.com/macros/s/AKfycbyFp5ILk_ipmbH1DUaw6fFGiKqHMKk9F1GysyEw7PV8qdqyHBVBsSWh7zpR_ALyXGBq/exec')
+      .then(res => res.json())
+      .then(data => {
+        data.sort((a, b) => new Date(b["Informazioni cronologiche"]) - new Date(a["Informazioni cronologiche"]));
+        const container = document.getElementById("chiamate-container");
+        const filtro = document.getElementById("filtro-squadra");
 
-        const title = document.createElement("h2");
-        title.textContent = `Stagione ${anno}`;
-        section.appendChild(title);
-
-        Object.entries(competizioni).forEach(([nome, podio]) => {
-          const comp = document.createElement("div");
-          const compTitle = document.createElement("h3");
-          compTitle.textContent = nome;
-          comp.appendChild(compTitle);
-
-          const podioDiv = document.createElement("div");
-          ["🥇", "🥈", "🥉"].forEach((medaglia, i) => {
-            const span = document.createElement("p");
-            span.innerHTML = `${medaglia} ${getLogoHtml(podio[i])}${podio[i] || '-'}`;
-            podioDiv.appendChild(span);
-          });
-
-          comp.appendChild(podioDiv);
-          section.appendChild(comp);
+        const squadre = [...new Set(data.map(row => row["Squadra"]))].sort();
+        squadre.forEach(s => {
+          const opt = document.createElement("option");
+          opt.value = s;
+          opt.textContent = s;
+          filtro.appendChild(opt);
         });
 
-        container.appendChild(section);
+        filtro.addEventListener("change", () => render(data));
+
+        function render(dati) {
+          const squadraSelezionata = filtro.value;
+          const filtrati = squadraSelezionata ? dati.filter(r => r["Squadra"] === squadraSelezionata) : dati;
+
+          container.innerHTML = "";
+          if (!filtrati.length) {
+            container.innerHTML = "<p>Nessuna chiamata trovata.</p>";
+            return;
+          }
+
+          filtrati.forEach(row => {
+            const card = document.createElement("div");
+            card.className = "card-chiamata";
+            card.innerHTML = `
+              <strong>${row["Squadra"]}</strong> - ${row["Informazioni cronologiche"]}<br>
+              Ha chiamato <strong>${row["Giocatore chiamato"]}</strong><br>
+              Al posto di <strong>${row["Giocatore svincolato"]}</strong>
+            `;
+            container.appendChild(card);
+          });
+        }
+
+        render(data);
+      })
+      .catch(err => {
+        document.getElementById("chiamate-container").innerHTML =
+          "<p>Errore nel caricamento delle chiamate.</p>";
+        console.error(err);
       });
-    }
   </script>
-  <script>
-fetch('https://script.google.com/macros/s/AKfycbyFp5ILk_ipmbH1DUaw6fFGiKqHMKk9F1GysyEw7PV8qdqyHBVBsSWh7zpR_ALyXGBq/exec')
-  .then(res => res.json())
-  .then(data => {
-    data.sort((a, b) => new Date(b["Informazioni cronologiche"]) - new Date(a["Informazioni cronologiche"]));
-
-    const container = document.getElementById("chiamate-container");
-    const filtro = document.getElementById("filtro-squadra");
-
-    const squadre = [...new Set(data.map(row => row["Squadra"]))].sort();
-    squadre.forEach(s => {
-      const opt = document.createElement("option");
-      opt.value = s;
-      opt.textContent = s;
-      filtro.appendChild(opt);
-    });
-
-    filtro.addEventListener("change", () => render(data));
-
-    function render(dati) {
-      const squadraSelezionata = filtro.value;
-      const filtrati = squadraSelezionata ? dati.filter(r => r["Squadra"] === squadraSelezionata) : dati;
-
-      container.innerHTML = "";
-      if (!filtrati.length) {
-        container.innerHTML = "<p>Nessuna chiamata trovata.</p>";
-        return;
-      }
-
-      filtrati.forEach(row => {
-        const card = document.createElement("div");
-        card.className = "card-chiamata";
-        card.innerHTML = `
-          <strong>${row["Squadra"]}</strong> - ${row["Informazioni cronologiche"]}<br>
-          Ha chiamato <strong>${row["Giocatore chiamato"]}</strong><br>
-          Al posto di <strong>${row["Giocatore svincolato"]}</strong>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    render(data);
-  })
-  .catch(err => {
-    document.getElementById("chiamate-container").innerHTML =
-      "<p>Errore nel caricamento delle chiamate.</p>";
-    console.error(err);
-  });
-</script>
-
 </body>
 </html>
