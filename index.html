@@ -58,55 +58,18 @@
       <button onclick="mostraRosa('Ibla')">Ibla</button>
       <button onclick="mostraRosa('Pandinicoccolosini')">Pandinicoccolosini</button>
       <button onclick="mostraRosa('Giulay')">Giulay</button>
-
       <div id="contenitore-rose"></div>
     </section>
 
     <section id="classifica">
-  <h2>Classifica</h2>
-  <div class="tab-buttons">
-    <button onclick="mostraClassifica('roundrobin')">Round Robin</button>
-    <button onclick="mostraClassifica('conference')">Conference League</button>
-    <button onclick="mostraClassifica('championship')">Conference Championship</button>
-  </div>
-
-  <div id="contenitore-classifica"></div>
-</section>
-
-  function mostraClassifica(tipo) {
-    const tabella = classifiche[tipo];
-    const contenitore = document.getElementById("contenitore-classifica");
-    contenitore.innerHTML = "";
-
-    if (!tabella) {
-      contenitore.innerHTML = "<p>Classifica non trovata.</p>";
-      return;
-    }
-
-    const table = document.createElement("table");
-    table.style.borderCollapse = "collapse";
-    table.style.width = "100%";
-    table.style.marginTop = "10px";
-
-    tabella.forEach((riga, i) => {
-      const tr = document.createElement("tr");
-      riga.forEach(cell => {
-        const td = document.createElement(i === 0 ? "th" : "td");
-        td.textContent = cell;
-        td.style.border = "1px solid #ccc";
-        td.style.padding = "6px 10px";
-        td.style.textAlign = "center";
-        tr.appendChild(td);
-      });
-      table.appendChild(tr);
-    });
-
-    contenitore.appendChild(table);
-  }
-
-  // Mostra la classifica Round Robin di default
-  mostraClassifica("roundrobin");
-</script>
+      <h2>Classifica</h2>
+      <div class="tab-buttons">
+        <button onclick="mostraClassifica('roundrobin')">Round Robin</button>
+        <button onclick="mostraClassifica('conference')">Conference League</button>
+        <button onclick="mostraClassifica('championship')">Conference Championship</button>
+      </div>
+      <div id="contenitore-classifica"></div>
+    </section>
 
     <section id="draft">
       <h2>Draft 2025</h2>
@@ -164,10 +127,48 @@
 
       contenitore.appendChild(teamDiv);
     }
-
-    console.log("Contenuto rose:", rose);
   </script>
+
+  <!-- Carico le classifiche -->
   <script src="classifiche.js"></script>
+
+  <!-- Funzione per mostrare classifiche -->
+  <script>
+    function mostraClassifica(tipo) {
+      const tabella = classifiche[tipo];
+      const contenitore = document.getElementById("contenitore-classifica");
+      contenitore.innerHTML = "";
+
+      if (!tabella) {
+        contenitore.innerHTML = "<p>Classifica non trovata.</p>";
+        return;
+      }
+
+      const table = document.createElement("table");
+      table.style.borderCollapse = "collapse";
+      table.style.width = "100%";
+      table.style.marginTop = "10px";
+
+      tabella.forEach((riga, i) => {
+        const tr = document.createElement("tr");
+        riga.forEach(cell => {
+          const td = document.createElement(i === 0 ? "th" : "td");
+          td.textContent = cell;
+          td.style.border = "1px solid #ccc";
+          td.style.padding = "6px 10px";
+          td.style.textAlign = "center";
+          tr.appendChild(td);
+        });
+        table.appendChild(tr);
+      });
+
+      contenitore.appendChild(table);
+    }
+
+    // Mostra la classifica Round Robin di default
+    mostraClassifica("roundrobin");
+  </script>
 </body>
 </html>
+
 
