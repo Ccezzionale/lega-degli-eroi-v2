@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+  <style>
+  .team-logo {
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+</style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lega degli Eroi</title>
@@ -249,5 +256,67 @@
       });
     });
   </script>
+  <script>
+  const logoPath = "loghi/";
+
+  const squadreConLogo = {
+    "MinneSota Snakes": "MinneSota Snakes.png",
+    "Pandinicoccolosini": "Pandinicoccolosini.png",
+    "Rubinkebab": "Rubinkebab.png",
+    "Team Bartowski": "Team Bartowski.png",
+    "wildboys78": "wildboys78.png",
+    "Bayern Christiansen": "Bayern Christiansen.png",
+    "Desperados": "Desperados.png",
+    "Giody": "Giody.png",
+    "Giulay": "giulay.png",
+    "Ibla": "Ibla.png",
+    "Minnesode Timberland": "Minnesode Timberland.png"
+  };
+
+  function getLogoHtml(nomeSquadra) {
+    const file = squadreConLogo[nomeSquadra];
+    if (file) {
+      return `<img src="${logoPath + file}" alt="logo" class="team-logo">`;
+    }
+    return "";
+  }
+
+  // Albo d'Oro
+  if (typeof alboDoro !== "undefined") {
+    const sezioneAlbo = document.querySelector("#albo");
+    Object.entries(alboDoro).forEach(([stagione, tornei]) => {
+      const titolo = document.createElement("h3");
+      titolo.textContent = stagione;
+      sezioneAlbo.appendChild(titolo);
+
+      Object.entries(tornei).forEach(([competizione, vincitori]) => {
+        const sottotitolo = document.createElement("h4");
+        sottotitolo.textContent = competizione;
+        sezioneAlbo.appendChild(sottotitolo);
+
+        const ul = document.createElement("ul");
+        vincitori.forEach(nome => {
+          const li = document.createElement("li");
+          li.innerHTML = getLogoHtml(nome) + nome;
+          ul.appendChild(li);
+        });
+        sezioneAlbo.appendChild(ul);
+      });
+    });
+  }
+
+  // Rose
+  if (typeof rose !== "undefined") {
+    const contenitoreBottoni = document.getElementById("contenitore-bottoni");
+    contenitoreBottoni.innerHTML = "";
+
+    Object.keys(rose).forEach(nome => {
+      const btn = document.createElement("button");
+      btn.innerHTML = getLogoHtml(nome) + nome;
+      btn.onclick = () => mostraRosa(nome);
+      contenitoreBottoni.appendChild(btn);
+    });
+  }
+</script>
 </body>
 </html>
