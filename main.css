@@ -68,3 +68,12 @@ th, td {
 tr:nth-child(even) {
   background-color: #f9f9f9;
 }
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+section {
+  margin-bottom: 40px;
+}
+
