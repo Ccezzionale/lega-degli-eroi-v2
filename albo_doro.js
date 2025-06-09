@@ -58,3 +58,7 @@ const alboDoro = {
     "Round Robin": []
   }
 };
+function mostraAlbo() {
+  const container = document.getElementById("contenitore-albo");
+  // genera qui l'albo come già fatto prima
+}
