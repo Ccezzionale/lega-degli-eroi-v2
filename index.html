@@ -218,7 +218,7 @@
     mostraClassifica("roundrobin");
 
     // Carica dinamicamente albo_doro.js
-   import('./nomecartella/albo_doro.js')).then(({ alboDoro }) => {
+    import('./albo_doro.js').then(({ alboDoro }) => {
       const container = document.getElementById("contenitore-albo");
       Object.entries(alboDoro).forEach(([anno, competizioni]) => {
         const section = document.createElement("div");
