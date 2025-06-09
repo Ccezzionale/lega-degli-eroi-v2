@@ -42,10 +42,26 @@
 
   <main>
     <section id="rose">
-      <h2>Rose</h2>
-      <p>Contenuto delle rose con FP/U21...</p>
-      <button onclick="mostraRosa('Team Bartowski')">Team Bartowski</button>
-      <button onclick="mostraRosa('Rubin Kebab')">Rubin Kebab</button>
+  <h2>Rose</h2>
+  <p>Contenuto delle rose con FP/U21...</p>
+  <button onclick="mostraRosa('Team Bartowski')">Team Bartowski</button>
+  <button onclick="mostraRosa('Rubin Kebab')">Rubin Kebab</button>
+  <button onclick="mostraRosa('wildboys78')">wildboys78</button>
+  <button onclick="mostraRosa('Desperados')">Desperados</button>
+  <button onclick="mostraRosa('MinneSota Snakes')">MinneSota Snakes</button>
+  <button onclick="mostraRosa('PokerMantra')">PokerMantra</button>
+  <button onclick="mostraRosa('Bayern Christiansen')">Bayern Christiansen</button>
+  <button onclick="mostraRosa('Minnesode Timberland')">Minnesode Timberland</button>
+  <button onclick="mostraRosa('Sharknado 04')">Sharknado 04</button>
+  <button onclick="mostraRosa('Real Mimmo')">Real Mimmo</button>
+  <button onclick="mostraRosa('Giody')">Giody</button>
+  <button onclick="mostraRosa('Ibla')">Ibla</button>
+  <button onclick="mostraRosa('Pandinicoccolosini')">Pandinicoccolosini</button>
+  <button onclick="mostraRosa('Giulay')">Giulay</button>
+
+  <div id="contenitore-rose"></div>
+</section>
+
       <!-- Aggiungi altri bottoni qui -->
       <div id="contenitore-rose"></div>
     </section>
@@ -111,7 +127,13 @@
 
       contenitore.appendChild(teamDiv);
     }
-  </script>
+  <!-- carico rose.js PRIMA -->
+<script src="rose.js"></script>
+
+<!-- poi uso la variabile -->
+<script>
+  console.log("Contenuto rose:", rose);
+</script>
 </body>
 </html>
 
