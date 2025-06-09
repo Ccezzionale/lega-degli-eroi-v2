@@ -224,38 +224,7 @@
     }
 
     mostraClassifica("roundrobin");
-
     // Carica dinamicamente albo_doro.js
-    import('./albo_doro.js').then(({ alboDoro }) => {
-      const container = document.getElementById("contenitore-albo");
-      Object.entries(alboDoro).forEach(([anno, competizioni]) => {
-        const section = document.createElement("div");
-        section.className = "team";
-
-        const title = document.createElement("h2");
-        title.textContent = `Stagione ${anno}`;
-        section.appendChild(title);
-
-        Object.entries(competizioni).forEach(([nome, podio]) => {
-          const comp = document.createElement("div");
-          const compTitle = document.createElement("h3");
-          compTitle.textContent = nome;
-          comp.appendChild(compTitle);
-
-          const podioDiv = document.createElement("div");
-          ["🥇", "🥈", "🥉"].forEach((medaglia, i) => {
-            const span = document.createElement("p");
-            span.textContent = `${medaglia} ${podio[i] || '-'}`;
-            podioDiv.appendChild(span);
-          });
-
-          comp.appendChild(podioDiv);
-          section.appendChild(comp);
-        });
-
-        container.appendChild(section);
-      });
-    });
   </script>
   <script>
   const logoPath = "loghi/";
