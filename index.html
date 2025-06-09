@@ -73,31 +73,6 @@
   <div id="contenitore-classifica"></div>
 </section>
 
-<script>
-  const classifiche = {
-    roundrobin: [
-      ["Pos", "Squadra", "Pt", "G", "V", "N", "P", "GF", "GS", "DR"],
-      ["1", "Real Mimmo", "66", "30", "20", "6", "4", "70", "40", "+30"],
-      ["2", "Sharknado 04", "63", "30", "19", "6", "5", "68", "44", "+24"],
-      ["3", "Ibla", "58", "30", "17", "7", "6", "60", "42", "+18"],
-      ["4", "wildboys78", "56", "30", "17", "5", "8", "62", "46", "+16"]
-    ],
-    conference: [
-      ["Pos", "Squadra", "Pt", "G", "V", "N", "P", "GF", "GS", "DR"],
-      ["1", "PokerMantra", "36", "18", "11", "3", "4", "42", "27", "+15"],
-      ["2", "MinneSota Snakes", "33", "18", "10", "3", "5", "38", "29", "+9"],
-      ["3", "Rubin Kebab", "31", "18", "9", "4", "5", "36", "30", "+6"],
-      ["4", "Giulay", "29", "18", "9", "2", "7", "35", "33", "+2"]
-    ],
-    championship: [
-      ["Pos", "Squadra", "Pt", "G", "V", "N", "P", "GF", "GS", "DR"],
-      ["1", "Real Mimmo", "40", "18", "12", "4", "2", "45", "25", "+20"],
-      ["2", "Ibla", "38", "18", "12", "2", "4", "43", "28", "+15"],
-      ["3", "Sharknado 04", "35", "18", "11", "2", "5", "41", "30", "+11"],
-      ["4", "Giody", "30", "18", "9", "3", "6", "38", "34", "+4"]
-    ]
-  };
-
   function mostraClassifica(tipo) {
     const tabella = classifiche[tipo];
     const contenitore = document.getElementById("contenitore-classifica");
