@@ -37,7 +37,7 @@
 }
 
 .team-logo {
-  height: 20px !important;
+  height: 20px;
   width: auto;
   max-height: 20px;
   vertical-align: middle;
