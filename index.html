@@ -1,127 +1,22 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lega degli Eroi</title>
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="main.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f7f7f7;
-      margin: 0;
-      padding: 0;
-    }
-    nav {
-      background-color: #333;
-      padding: 10px;
-    }
-    .navbar {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .navbar li {
-      margin: 5px 10px;
-    }
-    .navbar a {
-      color: white;
-      text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 4px;
-      background-color: #555;
-    }
-    .navbar a:hover {
-      background-color: #777;
-    }
-    main {
-      padding: 20px;
-    }
-    h2 {
-      color: #333;
-    }
-    .badge {
-      font-size: 0.8em;
-      padding: 2px 6px;
-      border-radius: 8px;
-      margin-left: 8px;
-    }
-    .fp { background-color: orange; color: white; }
-    .u21 { background-color: green; color: white; }
-    .both { background-color: purple; color: white; }
-    .player {
-      padding: 4px;
-      border-bottom: 1px solid #ddd;
-    }
-    .team {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      margin-top: 20px;
-      padding: 16px;
-    }
-    .tab-buttons button {
-      margin: 0 5px 10px 0;
-      padding: 6px 12px;
-      background-color: #444;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .tab-buttons button:hover {
-      background-color: #666;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
-    th {
-      background-color: #eee;
-      font-weight: bold;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 8px 12px;
-      text-align: center;
-    }
-    tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-    button {
-      margin: 4px;
-      padding: 6px 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      background-color: white;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #eee;
-    }
-    .team-logo {
-      height: 20px;
-      vertical-align: middle;
-      margin-right: 6px;
-    }
-    .card-chiamata {
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 12px;
-      margin-bottom: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      line-height: 1.5;
-    }
-    select {
-      padding: 6px 12px;
-      margin: 10px 0;
-      font-size: 1rem;
-    }
+    body { font-family: Arial, sans-serif; background-color: #f7f7f7; margin: 0; padding: 0; }
+    nav { background-color: #333; padding: 10px; }
+    .navbar { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; }
+    .navbar li { margin: 5px 10px; }
+    .navbar a { color: white; text-decoration: none; padding: 8px 12px; border-radius: 4px; background-color: #555; }
+    .navbar a:hover { background-color: #777; }
+    main { padding: 20px; }
+    h2 { color: #333; }
+    .card-chiamata { background: white; border: 1px solid #ccc; border-radius: 8px; padding: 12px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); line-height: 1.5; }
+    .team-logo { height: 20px; vertical-align: middle; margin-right: 6px; }
+    #filtro-wrapper { margin-bottom: 10px; }
   </style>
 </head>
 <body>
@@ -137,46 +32,13 @@
   </nav>
 
   <main>
-    <section id="rose">
-      <h2>Rose</h2>
-      <div id="contenitore-bottoni"></div>
-      <div id="contenitore-rose"></div>
-    </section>
-
-    <section id="classifica">
-      <h2>Classifica</h2>
-      <div class="tab-buttons">
-        <button onclick="mostraClassifica('roundrobin')">Round Robin</button>
-        <button onclick="mostraClassifica('conference')">Conference League</button>
-        <button onclick="mostraClassifica('championship')">Conference Championship</button>
-      </div>
-      <div id="contenitore-classifica"></div>
-    </section>
-
-    <section id="draft">
-      <h2>Draft 2025</h2>
-      <p>Ordine e scambi visivi...</p>
-    </section>
-
-    <section id="svincolati">
-      <h2>Svincolati</h2>
-      <p>Lista filtrabile degli svincolati...</p>
-    </section>
-
     <section id="chiamate">
-      <h2>Chiamate Segrete</h2>
-      <p><a href="https://docs.google.com/forms/d/e/1FAIpQLScNaxnbpVmIW_t23uvRqLkRy6sDrzyEvQQ-mpLDkk67DVDLag/viewform?usp=header" target="_blank">Invia la tua chiamata segreta</a></p>
-    </section>
-
-    <section>
       <h2 class="titolo">Chiamate Settimanali</h2>
-
-      <label for="filtro-squadra">Filtra per squadra:</label>
-      <select id="filtro-squadra">
-        <option value="">Tutte</option>
-      </select>
-      <button onclick="aggiornaChiamate()">🔁 Aggiorna</button>
-
+      <div id="filtro-wrapper">
+        <label for="filtro-squadra">Filtra per squadra:</label>
+        <select id="filtro-squadra"><option value="">Tutte</option></select>
+        <button onclick="aggiornaChiamate()">🔁 Aggiorna</button>
+      </div>
       <div id="chiamate-container">Caricamento chiamate...</div>
     </section>
 
@@ -186,13 +48,19 @@
     </section>
   </main>
 
-  <script src="rose.js"></script>
-  <script src="classifiche.js"></script>
-  <script src="albo_doro.js"></script>
-
   <script>
-    const logoPath = "loghi/";
+    const alboDoro = {
+      "2024-25": {
+        "Conference Championship": ["wildboys78", "Ibla", "MinneSota Snakes"],
+        "Conference League": ["Rubinkebab", "Giuly", "Bayern Christiansen"]
+      },
+      "2023-24": {
+        "Conference Championship": ["Ibla", "Team Bartowski", "Desperados"],
+        "Conference League": ["Pandinicoccolosini", "Giody", "Rubinkebab"]
+      }
+    };
 
+    const logoPath = "loghi/";
     const squadreConLogo = {
       "MinneSota Snakes": "MinneSota Snakes.png",
       "Pandinicoccolosini": "Pandinicoccolosini.png",
@@ -215,66 +83,34 @@
       return "";
     }
 
-    const squadre = Object.keys(rose);
-    const bottoniContainer = document.getElementById("contenitore-bottoni");
-    squadre.forEach(nome => {
-      const btn = document.createElement("button");
-      btn.innerHTML = getLogoHtml(nome) + nome;
-      btn.onclick = () => mostraRosa(nome);
-      bottoniContainer.appendChild(btn);
+    const containerAlbo = document.getElementById("contenitore-albo");
+    Object.entries(alboDoro).forEach(([anno, competizioni]) => {
+      const section = document.createElement("div");
+      section.className = "team";
+      const title = document.createElement("h2");
+      title.textContent = `Stagione ${anno}`;
+      section.appendChild(title);
+
+      Object.entries(competizioni).forEach(([nome, podio]) => {
+        const comp = document.createElement("div");
+        const compTitle = document.createElement("h3");
+        compTitle.textContent = nome;
+        comp.appendChild(compTitle);
+
+        const podioDiv = document.createElement("div");
+        ["🥇", "🥈", "🥉"].forEach((medaglia, i) => {
+          const span = document.createElement("p");
+          span.innerHTML = `${medaglia} ${getLogoHtml(podio[i])}${podio[i] || '-'}`;
+          podioDiv.appendChild(span);
+        });
+
+        comp.appendChild(podioDiv);
+        section.appendChild(comp);
+      });
+
+      containerAlbo.appendChild(section);
     });
 
-    function mostraRosa(squadra) {
-      const contenitore = document.getElementById("contenitore-rose");
-      contenitore.innerHTML = "";
-      const rosa = rose[squadra];
-      if (!rosa) {
-        contenitore.innerHTML = "<p>Squadra non trovata.</p>";
-        return;
-      }
-      const teamDiv = document.createElement("div");
-      teamDiv.className = "team";
-      const title = document.createElement("h2");
-      title.innerHTML = getLogoHtml(squadra) + squadra;
-      teamDiv.appendChild(title);
-      rosa.forEach(player => {
-        const div = document.createElement("div");
-        div.className = "player";
-        let badge = "";
-        if (player.status === "fp") badge = '<span class="badge fp">FP</span>';
-        else if (player.status === "u21") badge = '<span class="badge u21">U21</span>';
-        else if (player.status === "fp+u21") badge = '<span class="badge both">FP+U21</span>';
-        div.innerHTML = `${player.nome} ${badge}`;
-        teamDiv.appendChild(div);
-      });
-      contenitore.appendChild(teamDiv);
-    }
-
-    function mostraClassifica(tipo) {
-      const tabella = classifiche[tipo];
-      const contenitore = document.getElementById("contenitore-classifica");
-      contenitore.innerHTML = "";
-      if (!tabella) {
-        contenitore.innerHTML = "<p>Classifica non trovata.</p>";
-        return;
-      }
-      const table = document.createElement("table");
-      tabella.forEach((riga, i) => {
-        const tr = document.createElement("tr");
-        riga.forEach(cell => {
-          const td = document.createElement(i === 0 ? "th" : "td");
-          td.textContent = cell;
-          tr.appendChild(td);
-        });
-        table.appendChild(tr);
-      });
-      contenitore.appendChild(table);
-    }
-
-    mostraClassifica("roundrobin");
-  </script>
-
-  <script>
     function aggiornaChiamate() {
       document.getElementById("chiamate-container").innerHTML = "Aggiornamento in corso...";
       caricaChiamate();
@@ -285,7 +121,6 @@
         .then(res => res.json())
         .then(data => {
           data.sort((a, b) => new Date(b["Informazioni cronologiche"]) - new Date(a["Informazioni cronologiche"]));
-
           const container = document.getElementById("chiamate-container");
           const filtro = document.getElementById("filtro-squadra");
 
@@ -298,11 +133,11 @@
             filtro.appendChild(opt);
           });
 
-          filtro.addEventListener("change", () => render(data));
+          filtro.onchange = () => render(data);
 
           function render(dati) {
-            const squadraSelezionata = filtro.value;
-            const filtrati = squadraSelezionata ? dati.filter(r => r["Squadra"] === squadraSelezionata) : dati;
+            const squadra = filtro.value;
+            const filtrati = squadra ? dati.filter(r => r["Squadra"] === squadra) : dati;
 
             container.innerHTML = "";
             if (!filtrati.length) {
@@ -329,13 +164,12 @@
           render(data);
         })
         .catch(err => {
-          document.getElementById("chiamate-container").innerHTML =
-            "<p>Errore nel caricamento delle chiamate.</p>";
+          document.getElementById("chiamate-container").innerHTML = "<p>Errore nel caricamento delle chiamate.</p>";
           console.error(err);
         });
     }
 
-    caricaChiamate(); // carica all'avvio
+    caricaChiamate();
   </script>
 </body>
 </html>
