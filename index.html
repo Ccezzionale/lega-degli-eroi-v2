@@ -152,13 +152,15 @@
 
     <section id="albo">
       <h2>Albo d'Oro</h2>
-      <p>Vincitori precedenti...</p>
+      <div id="contenitore-albo"></div>
     </section>
   </main>
 
   <script src="rose.js"></script>
   <script src="classifiche.js"></script>
-  <script>
+  <script type="module">
+    import { alboDoro } from './albo_doro.js';
+
     const squadre = Object.keys(rose);
     const bottoniContainer = document.getElementById("contenitore-bottoni");
     squadre.forEach(nome => {
@@ -216,6 +218,36 @@
     }
 
     mostraClassifica("roundrobin");
+
+    // Albo d'Oro
+    const container = document.getElementById("contenitore-albo");
+    Object.entries(alboDoro).forEach(([anno, competizioni]) => {
+      const section = document.createElement("div");
+      section.className = "team";
+
+      const title = document.createElement("h2");
+      title.textContent = `Stagione ${anno}`;
+      section.appendChild(title);
+
+      Object.entries(competizioni).forEach(([nome, podio]) => {
+        const comp = document.createElement("div");
+        const compTitle = document.createElement("h3");
+        compTitle.textContent = nome;
+        comp.appendChild(compTitle);
+
+        const podioDiv = document.createElement("div");
+        ["🥇", "🥈", "🥉"].forEach((medaglia, i) => {
+          const span = document.createElement("p");
+          span.textContent = `${medaglia} ${podio[i] || '-'}`;
+          podioDiv.appendChild(span);
+        });
+
+        comp.appendChild(podioDiv);
+        section.appendChild(comp);
+      });
+
+      container.appendChild(section);
+    });
   </script>
 </body>
 </html>
