@@ -1,64 +1,61 @@
 const alboDoro = {
-  "2024-2025": {
-    "Campionato": [
-      "Bayern Christiansen",
-      "Real Mimmo",
-      "Ibla"
-    ],
-    "Highlander Cup": [
-      "Rubinkebab",
-      "Team Bartowski",
-      "Bayern Christiansen"
-    ],
-    "Conference Championship": [
-      "Team Bartowski",
-      "Rubinkebab",
-      "Union Librino"
-    ],
-    "Round Robin": [
-      "Team Bartowski",
-      "MinnesodeTimberland",
-      "Bayern Christiansen"
-    ]
+  "2024-25": {
+    "Conference Championship": ["wildboys78", "Ibla", "MinneSota Snakes"],
+    "Conference League": ["Rubinkebab", "Giuly", "Bayern Christiansen"]
   },
-  "2023-2024": {
-    "Campionato": [
-      "Costantinobull",
-      "Pollisti",
-      "Bayern Christiansen"
-    ],
-    "Highlander Cup": [
-      "Costantinobull",
-      "Pollisti",
-      "POKERMANTRA"
-    ],
-    "Conference Championship": [
-      "Real Mimmo",
-      "Desperados",
-      "Pollisti"
-    ],
-    "Round Robin": [
-      "MinneSota Snakes",
-      "3 Amici al Var",
-      "Team Bartowski"
-    ]
-  },
-  "2022-2023": {
-    "Campionato": [
-      "Pollisti",
-      "Cugini di Zampagna",
-      "Desperados/ Real Mimmo"
-    ],
-    "Highlander Cup": [
-      "Pollisti",
-      "Desperados",
-      "Cugini di Zampagna"
-    ],
-    "Conference Championship": [],
-    "Round Robin": []
+  "2023-24": {
+    "Conference Championship": ["Ibla", "Team Bartowski", "Desperados"],
+    "Conference League": ["Pandinicoccolosini", "Giody", "Rubinkebab"]
   }
 };
-function mostraAlbo() {
-  const container = document.getElementById("contenitore-albo");
-  // genera qui l'albo come già fatto prima
+
+const logoPath = "loghi/";
+const squadreConLogo = {
+  "MinneSota Snakes": "MinneSota Snakes.png",
+  "Pandinicoccolosini": "Pandinicoccolosini.png",
+  "Rubinkebab": "Rubinkebab.png",
+  "Team Bartowski": "Team Bartowski.png",
+  "wildboys78": "wildboys78.png",
+  "Bayern Christiansen": "Bayern Christiansen.png",
+  "Desperados": "Desperados.png",
+  "Giody": "Giody.png",
+  "Giulay": "Giulay.png",
+  "Ibla": "Ibla.png",
+  "Minnesode Timberland": "Minnesode Timberland.png"
+};
+
+function getLogoHtml(nomeSquadra) {
+  const file = squadreConLogo[nomeSquadra];
+  if (file) {
+    return `<img src="${logoPath + file}" alt="logo" class="team-logo">`;
+  }
+  return "";
 }
+
+const containerAlbo = document.getElementById("contenitore-albo");
+Object.entries(alboDoro).forEach(([anno, competizioni]) => {
+  const section = document.createElement("div");
+  section.className = "team";
+  const title = document.createElement("h2");
+  title.textContent = `Stagione ${anno}`;
+  section.appendChild(title);
+
+  Object.entries(competizioni).forEach(([nome, podio]) => {
+    const comp = document.createElement("div");
+    const compTitle = document.createElement("h3");
+    compTitle.textContent = nome;
+    comp.appendChild(compTitle);
+
+    const podioDiv = document.createElement("div");
+    ["🥇", "🥈", "🥉"].forEach((medaglia, i) => {
+      const span = document.createElement("p");
+      span.innerHTML = `${medaglia} ${getLogoHtml(podio[i])}${podio[i] || '-'}`;
+      podioDiv.appendChild(span);
+    });
+
+    comp.appendChild(podioDiv);
+    section.appendChild(comp);
+  });
+
+  containerAlbo.appendChild(section);
+});
