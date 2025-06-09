@@ -21,8 +21,9 @@
   <main>
     <section id="rose">
       <h2 class="titolo">Rose</h2>
+      <div id="contenitore-bottoni"></div>
       <div id="contenitore-rose"></div>
-  </section>
+    </section>
 
     <section id="classifica">
       <h2>Classifica</h2>
@@ -60,71 +61,7 @@
     </section>
   </main>
 
-  <!-- JS Scripts -->
   <script src="rose.js"></script>
-  <script>
-  const logoPath = "loghi/";
-  const squadreConLogo = {
-    "Team Bartowski": "Team Bartowski.png",
-    "Rubin Kebab": "Rubinkebab.png",
-    "wildboys78": "wildboys78.png",
-    "Desperados": "Desperados.png",
-    "MinneSota Snakes": "MinneSota Snakes.png",
-    "PokerMantra": "PokerMantra.png",
-    "Bayern Christiansen": "Bayern Christiansen.png",
-    "Minnesode Timberland": "Minnesode Timberland.png",
-    "Sharknado 04": "Sharknado 04.png",
-    "Real Mimmo": "Real Mimmo.png",
-    "Giody": "Giody.png",
-    "Ibla": "Ibla.png",
-    "Pandinicoccolosini": "Pandinicoccolosini.png",
-    "Giulay": "Giulay.png"
-  };
-
-  function getLogoHtml(nomeSquadra) {
-    const file = squadreConLogo[nomeSquadra];
-    return file ? `<img src="${logoPath + file}" alt="logo" class="team-logo">` : "";
-  }
-
-  const bottoniContainer = document.getElementById("contenitore-bottoni");
-  const contenitoreRose = document.getElementById("contenitore-rose");
-
-  Object.keys(rose).forEach(squadra => {
-    const btn = document.createElement("button");
-    btn.innerHTML = getLogoHtml(squadra) + squadra;
-    btn.onclick = () => mostraRosa(squadra);
-    bottoniContainer.appendChild(btn);
-  });
-
-  function mostraRosa(squadra) {
-    contenitoreRose.innerHTML = "";
-    const rosa = rose[squadra];
-    if (!rosa) {
-      contenitoreRose.innerHTML = "<p>Rosa non trovata.</p>";
-      return;
-    }
-
-    const teamDiv = document.createElement("div");
-    teamDiv.className = "team";
-    const title = document.createElement("h2");
-    title.innerHTML = getLogoHtml(squadra) + squadra;
-    teamDiv.appendChild(title);
-
-    rosa.forEach(player => {
-      const div = document.createElement("div");
-      div.className = "player";
-      let badge = "";
-      if (player.status === "fp") badge = '<span class="badge fp">FP</span>';
-      else if (player.status === "u21") badge = '<span class="badge u21">U21</span>';
-      else if (player.status === "fp+u21") badge = '<span class="badge both">FP+U21</span>';
-      div.innerHTML = `${player.nome} ${badge}`;
-      teamDiv.appendChild(div);
-    });
-
-    contenitoreRose.appendChild(teamDiv);
-  }
-</script>
-
   <script src="classifiche.js"></script>
   <script src="albo_doro.js"></script>
   <script src="chiamate.js"></script>
