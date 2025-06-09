@@ -92,6 +92,100 @@
     </section>
   </main>
 
+  <!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lega degli Eroi</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    .badge {
+      font-size: 0.8em;
+      padding: 2px 6px;
+      border-radius: 8px;
+      margin-left: 8px;
+    }
+    .fp { background-color: orange; color: white; }
+    .u21 { background-color: green; color: white; }
+    .both { background-color: purple; color: white; }
+    .player {
+      padding: 4px;
+      border-bottom: 1px solid #ddd;
+    }
+    .team {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-top: 20px;
+      padding: 16px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="navbar">
+      <li><a href="#rose">Rose</a></li>
+      <li><a href="#classifica">Classifica</a></li>
+      <li><a href="#draft">Draft</a></li>
+      <li><a href="#svincolati">Svincolati</a></li>
+      <li><a href="#chiamate">Chiamate</a></li>
+      <li><a href="#albo">Albo d'Oro</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="rose">
+      <h2>Rose</h2>
+      <p>Contenuto delle rose con FP/U21...</p>
+      <button onclick="mostraRosa('Team Bartowski')">Team Bartowski</button>
+      <button onclick="mostraRosa('Rubin Kebab')">Rubin Kebab</button>
+      <button onclick="mostraRosa('wildboys78')">wildboys78</button>
+      <button onclick="mostraRosa('Desperados')">Desperados</button>
+      <button onclick="mostraRosa('MinneSota Snakes')">MinneSota Snakes</button>
+      <button onclick="mostraRosa('PokerMantra')">PokerMantra</button>
+      <button onclick="mostraRosa('Bayern Christiansen')">Bayern Christiansen</button>
+      <button onclick="mostraRosa('Minnesode Timberland')">Minnesode Timberland</button>
+      <button onclick="mostraRosa('Sharknado 04')">Sharknado 04</button>
+      <button onclick="mostraRosa('Real Mimmo')">Real Mimmo</button>
+      <button onclick="mostraRosa('Giody')">Giody</button>
+      <button onclick="mostraRosa('Ibla')">Ibla</button>
+      <button onclick="mostraRosa('Pandinicoccolosini')">Pandinicoccolosini</button>
+      <button onclick="mostraRosa('Giulay')">Giulay</button>
+      <div id="contenitore-rose"></div>
+    </section>
+
+    <section id="classifica">
+      <h2>Classifica</h2>
+      <div class="tab-buttons">
+        <button onclick="mostraClassifica('roundrobin')">Round Robin</button>
+        <button onclick="mostraClassifica('conference')">Conference League</button>
+        <button onclick="mostraClassifica('championship')">Conference Championship</button>
+      </div>
+      <div id="contenitore-classifica"></div>
+    </section>
+
+    <section id="draft">
+      <h2>Draft 2025</h2>
+      <p>Ordine e scambi visivi...</p>
+    </section>
+
+    <section id="svincolati">
+      <h2>Svincolati</h2>
+      <p>Lista filtrabile degli svincolati...</p>
+    </section>
+
+    <section id="chiamate">
+      <h2>Chiamate Segrete</h2>
+      <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSd0GwlYmR8GBcW_fltIbnGDgIsITb0YNjnlxsoULQguPAALZw/viewform?usp=header" target="_blank">Invia la tua chiamata segreta</a></p>
+    </section>
+
+    <section id="albo">
+      <h2>Albo d'Oro</h2>
+      <p>Vincitori precedenti...</p>
+    </section>
+  </main>
+
   <!-- Carico le rose -->
   <script src="rose.js"></script>
 
@@ -167,6 +261,11 @@
 
     // Mostra la classifica Round Robin di default
     mostraClassifica("roundrobin");
+  </script>
+</body>
+</html>
+
+
   </script>
 </body>
 </html>
