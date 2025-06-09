@@ -1,4 +1,4 @@
-export const alboDoro = {
+const alboDoro = {
   "2024-2025": {
     "Campionato": [
       "Bayern Christiansen",
